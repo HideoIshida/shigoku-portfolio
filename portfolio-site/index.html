@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>sHIgoku（シゴク）| Photographer</title>
+<meta name="description" content="福岡を拠点に活動するフォトグラファー sHIgoku（シゴク）のポートフォリオ。自然、イベント、空間、人物。">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">sHIgoku</a>
+<nav aria-label="メイン"><a href="#works">Works</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a></nav></div></header>
+<main>
+<!-- Top：6枚の写真がスクロールで次々に重なって出てくる（写真は data/works.js の top で指定） -->
+<div id="top"><div class="stack" id="stack"></div></div>
+<div id="pg" hidden aria-hidden="true"></div>
+<template id="tpl-first">
+<h1>「次」につながつながる写真を。</h1>
+<p>撮るだけでは終わらない、次のための写真を。</p>
+<span class="cue">SCROLL</span>
+</template>
+<template id="tpl-last"><a class="btn" href="#works">作品をすべて見る</a></template>
+
+<section id="works"><div class="wrap">
+<h2><small>WORKS</small>作品</h2>
+<p class="lead">写真をクリックすると拡大できます。</p>
+<div class="filters" role="group" aria-label="カテゴリー">
+<button aria-pressed="true" data-f="all">すべて</button><button aria-pressed="false" data-f="nature">Nature</button><button aria-pressed="false" data-f="event">Event</button><button aria-pressed="false" data-f="space">Commercial &amp; Space</button><button aria-pressed="false" data-f="portrait">Portrait</button>
+</div>
+<div class="grid" id="grid"></div>
+<div class="more" id="more"><p id="count"></p><button class="btn" id="moreBtn" type="button">もっと見る</button></div>
+</div></section>
+
+<section id="about" class="bd"><div class="wrap about">
+<img class="prof" src="images/profile.webp" width="1600" height="1060" alt="森の中でカメラを構える撮影者のプロフィール写真" loading="lazy">
+<div>
+<h2><small>ABOUT</small>sHIgoku（シゴク）</h2>
+<p>2023年よりフォトグラファーとして活動を開始。</p>
+<p>技術の先にある「思想やストーリー」を突き詰め、見る人の行動につながる一枚を撮影します。単なる記録にとどまらず、見る人の心に問いかけ、次の行動や変化のきっかけとなる「次につながる写真」を追求しています。</p>
+<p>競技ヨーヨーで世界一になった経験を活かしながら、写真でも世界一を目指しています。</p>
+<dl><dt>拠点</dt><dd>福岡</dd></dl>
+<h3>受賞歴</h3>
+<div class="tw"><table>
+<tr><th>年</th><th>内容</th></tr>
+<tr><td>2026</td><td>第72回全国展フォトコンテスト 第1部 日本の文化　入選</td></tr>
+<tr><td>2026</td><td>第2回 SONY THE NEW CREATORS　入賞</td></tr>
+<tr><td>その他</td><td>1x にて Published、Award 多数</td></tr>
+</table></div>
+<h3>使用機材</h3>
+<dl>
+<dt>カメラ</dt><dd>SONY α1 ／ SONY α7C ／ Leica Q2</dd>
+<dt>レンズ</dt><dd>SIGMA 14-24mm F2.8 DG DN | Art ／ SONY 24-70mm F2.8 GM II ／ SONY 28-60mm F4-5.6 ／ SONY 70-200mm F2.8 GM II ／ SIGMA 150-600mm F5-6.3 DG DN OS | Sports</dd>
+<dt>ストロボ</dt><dd>GODOX AD100Pro ／ GODOX 860 III</dd>
+</dl>
+</div></div></section>
+
+<section id="services" class="bd"><div class="wrap">
+<h2><small>SERVICES</small>提供できること</h2>
+<p class="lead">提供できること、対応領域、費用の目安です。内容に合わせてお見積りします。</p>
+<div class="svc">
+<div><h3>Nature</h3><p>風景・自然写真の撮影、作品提供、ロケ同行。</p><span class="price">作品利用 ¥XX,000〜</span></div>
+<div><h3>Event</h3><p>祭り、ライブ、舞台、式典の記録撮影。当日納品も相談可。</p><span class="price">半日 ¥XX,000〜</span></div>
+<div><h3>Commercial &amp; Space</h3><p>店舗・施設・商品の撮影。Web、パンフレット向け。</p><span class="price">1案件 ¥XX,000〜</span></div>
+<div><h3>Portrait</h3><p>プロフィール、アーティスト、取材用のポートレート。</p><span class="price">1時間 ¥XX,000〜</span></div>
+</div>
+<p class="note">※ 金額は目安です。撮影時間、納品点数、利用範囲により変わります。</p>
+<ol class="flow">
+<li><b>ご相談</b>目的、届けたい相手、時期、予算の目安を教えてください。</li>
+<li><b>打ち合わせ・ご提案</b>内容と進め方、お見積りをご提案します。</li>
+<li><b>撮影</b>必要に応じて下見をし、最適な日時に撮影します。</li>
+<li><b>納品</b>セレクトと現像のうえ、用途に合わせてお届けします。</li>
+</ol>
+</div></section>
+
+<section id="contact" class="bd"><div class="wrap">
+<h2><small>CONTACT</small>お問い合わせ</h2>
+<p class="lead">撮影のご相談、お見積り、取材のご依頼はこちらから。2営業日以内に返信します。</p>
+<form id="f" novalidate>
+<label>お名前<input name="name" required autocomplete="name"></label>
+<label>会社・団体名（任意）<input name="org" autocomplete="organization"></label>
+<label>メールアドレス<input name="email" type="email" required autocomplete="email"></label>
+<label>ご依頼内容<select name="type"><option>Nature</option><option>Event</option><option>Commercial &amp; Space</option><option>Portrait</option><option>その他</option></select></label>
+<label>メッセージ<textarea name="body" required></textarea></label>
+<div><button class="btn" type="submit">送信する</button></div>
+<div id="msg" role="status"></div>
+</form>
+<p class="contact-line">メールでも受け付けています：you@example.com／Instagram @yourname</p>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 sHIgoku. All rights reserved.</div></footer>
+<div id="lb" role="dialog" aria-modal="true" aria-label="拡大表示"><button class="x" aria-label="閉じる">×</button><button class="n p" aria-label="前へ">‹</button><img alt=""><p></p><button class="n nx" aria-label="次へ">›</button></div>
+<script src="data/works.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
