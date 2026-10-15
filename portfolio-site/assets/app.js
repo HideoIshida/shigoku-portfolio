@@ -15,10 +15,11 @@ var slides=tops.map(function(w,i){
   var im=s.querySelector("img");im.src=w.src;im.alt=w.alt||"";im.style.objectPosition=w.pos||"50% 50%";
   if(i>0)im.loading="lazy";else im.fetchPriority="high";
   var c=s.querySelector(".cap");
-  if(i===0)c.appendChild(document.getElementById("tpl-first").content.cloneNode(true));
+  var first=document.getElementById("tpl-first"),last=document.getElementById("tpl-last");
+  if(i===0&&first)c.appendChild(first.content.cloneNode(true));
   var no=el('<span class="no"></span>');no.textContent=pad(i+1)+" / "+pad(tops.length)+"　"+(NAMES[w.cat]||"");c.appendChild(no);
   var t=el('<p class="t"></p>');t.textContent=cap(w);c.appendChild(t);
-  if(i===tops.length-1)c.appendChild(document.getElementById("tpl-last").content.cloneNode(true));
+  if(i===tops.length-1&&last)c.appendChild(last.content.cloneNode(true));
   stack.appendChild(s);return s;
 });
 if("IntersectionObserver" in window&&slides.length){
