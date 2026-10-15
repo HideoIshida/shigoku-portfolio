@@ -27,7 +27,8 @@ if("IntersectionObserver" in window&&slides.length){
     if(e.isIntersecting){e.target.classList.add("on");pg.textContent=pad(slides.indexOf(e.target)+1)+" / "+pad(slides.length)}
   })},{threshold:.55});
   slides.forEach(function(s){io.observe(s)});
-  new IntersectionObserver(function(es){pg.hidden=!es[0].isIntersecting},{threshold:0}).observe(stack);
+  var cue=document.getElementById("cue");
+  new IntersectionObserver(function(es){pg.hidden=cue.hidden=!es[0].isIntersecting},{threshold:0}).observe(stack);
 }else{slides.forEach(function(s){s.classList.add("on")})}
 if(slides[0])requestAnimationFrame(function(){slides[0].classList.add("on")});
 
@@ -63,7 +64,7 @@ document.addEventListener("keydown",function(e){if(!lb.classList.contains("on"))
   if(e.key==="Escape")lb.classList.remove("on");if(e.key==="ArrowLeft")show(idx-1);if(e.key==="ArrowRight")show(idx+1)});
 
 /* お問い合わせ（Formspree経由でメール送信） */
-var FORM_URL="https://formspree.io/f/meaepaww"; // ← Formspreeで発行されたURLに変更
+var FORM_URL="https://formspree.io/f/meaepaww"; // ← Formspreeで発行されたURL
 document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();
   var f=e.target,m=document.getElementById("msg"),b=f.querySelector("button[type=submit]");
   if(!f.name.value||!f.email.value||!f.body.value){m.textContent="お名前、メールアドレス、メッセージを入力してください。";return}

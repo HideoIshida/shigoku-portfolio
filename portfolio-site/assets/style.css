@@ -31,7 +31,7 @@ nav{display:flex;gap:24px;font-size:14px}nav a{text-decoration:none;opacity:.75}
 .cap .no{display:block;font-size:12px;letter-spacing:.3em;color:var(--accent);margin:22px 0 4px}
 .cap .t{font-size:14px;color:#cfc9bf;margin:0}
 .cap .btn{margin-top:20px}
-.cue{position:absolute;right:24px;bottom:0;font-size:11px;letter-spacing:.3em;writing-mode:vertical-rl;padding-bottom:72px}
+.cue{position:fixed;right:24px;bottom:calc(44px + env(safe-area-inset-bottom,0px));z-index:15;font-size:11px;letter-spacing:.3em;writing-mode:vertical-rl;padding-bottom:72px;text-shadow:0 1px 8px #000}
 .cue::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:56px;background:var(--fg);animation:cue 2s infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 #pg{position:fixed;right:24px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:15;font-size:12px;letter-spacing:.25em;color:var(--fg);opacity:.8;text-shadow:0 1px 8px #000}
@@ -69,5 +69,5 @@ select option{background:#1b1a18}textarea{min-height:140px;resize:vertical;borde
 #msg{min-height:1.6em;color:var(--accent)}.contact-line{margin-top:32px;font-size:14px;color:var(--mute)}
 footer{border-top:1px solid var(--line);padding:32px 0;font-size:13px;color:var(--mute)}
 @media (max-width:960px){.svc{grid-template-columns:1fr 1fr}}
-@media (max-width:760px){nav{gap:14px;font-size:13px}section{padding:64px 0}.svc{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:32px}.svc>div{padding-right:0}.flow{grid-template-columns:1fr 1fr}..cue{display:none}.slide>img{object-fit:contain;object-position:50% 50%;transform:none}}
+@media (max-width:760px){nav{gap:14px;font-size:13px}section{padding:64px 0}.svc{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:32px}.svc>div{padding-right:0}.flow{grid-template-columns:1fr 1fr}.slide>img{object-fit:contain;object-position:50% 50%;transform:none}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::after{transition:none!important;animation:none!important}.slide>img{transform:none}.cap{opacity:1;transform:none}}
