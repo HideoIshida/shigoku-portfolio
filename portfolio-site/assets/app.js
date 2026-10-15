@@ -12,7 +12,7 @@ function pad(n){return (n<10?"0":"")+n}
 var tops=W.filter(function(w){return w.top}).sort(function(a,b){return a.top-b.top});
 var slides=tops.map(function(w,i){
   var s=el('<div class="slide"><img decoding="async"><div class="cap"></div></div>');
-  var im=s.querySelector("img");im.src=w.src;im.alt=w.alt||"";im.style.objectPosition=w.pos||"50% 50%";
+  var im=s.querySelector("img");im.src=w.src;im.alt=w.alt||"";im.style.setProperty("--pos",w.pos||"50% 50%");
   if(i>0)im.loading="lazy";else im.fetchPriority="high";
   var c=s.querySelector(".cap");
   var first=document.getElementById("tpl-first"),last=document.getElementById("tpl-last");
@@ -62,9 +62,18 @@ lb.addEventListener("click",function(e){if(e.target===lb)lb.classList.remove("on
 document.addEventListener("keydown",function(e){if(!lb.classList.contains("on"))return;
   if(e.key==="Escape")lb.classList.remove("on");if(e.key==="ArrowLeft")show(idx-1);if(e.key==="ArrowRight")show(idx+1)});
 
-/* お問い合わせ（画面上の動作のみ。実際に送るには Formspree 等をつなぐ） */
+/* お問い合わせ（Formspree経由でメール送信） */
+var FORM_URL="https://formspree.io/f/meaepaww"; // ← Formspreeで発行されたURLに変更
 document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();
-  var f=e.target,m=document.getElementById("msg");
+  var f=e.target,m=document.getElementById("msg"),b=f.querySelector("button[type=submit]");
   if(!f.name.value||!f.email.value||!f.body.value){m.textContent="お名前、メールアドレス、メッセージを入力してください。";return}
-  m.textContent="送信しました。（雛形のため、実際には送信されません）";f.reset()});
+  b.disabled=true;m.textContent="送信中です…";
+  fetch(FORM_URL,{method:"POST",body:new FormData(f),headers:{"Accept":"application/json"}})
+    .then(function(r){
+      if(r.ok){m.textContent="送信しました。2営業日以内にご返信します。";f.reset()}
+      else{m.textContent="送信できませんでした。お手数ですがメールでご連絡ください。"}
+    })
+    .catch(function(){m.textContent="通信エラーが発生しました。メールでご連絡ください。"})
+    .then(function(){b.disabled=false});
+});
 })();
